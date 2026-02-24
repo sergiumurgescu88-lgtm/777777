@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-serif: "Playfair Display", serif;
+}
+
+@layer base {
+  body {
+    @apply bg-[#0a0a0a] text-white font-sans;
+  }
+}
+
+.glass {
+  @apply bg-white/5 backdrop-blur-md border border-white/10;
+}
+
+.glass-dark {
+  @apply bg-black/40 backdrop-blur-xl border border-white/5;
+}
+
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-cyan-500;
+}
+
+@layer components {
+  .adult-section-btn {
+    border: 2px solid #FF0000;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d0a0a 100%);
+    color: #FF4444;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .adult-section-btn::before {
+    content: "🔒 18+";
+    position: absolute;
+    top: -8px;
+    right: 8px;
+    background: #FF0000;
+    color: white;
+    padding: 1px 6px;
+    border-radius: 8px;
+    font-size: 9px;
+    font-weight: bold;
+    z-index: 10;
+  }
+
+  .adult-section-btn:hover {
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+    animation: pulse-red 2s infinite;
+    color: white;
+  }
+
+  @keyframes pulse-red {
+    0%, 100% { box-shadow: 0 0 10px rgba(255, 0, 0, 0.2); }
+    50% { box-shadow: 0 0 30px rgba(255, 0, 0, 0.5); }
+  }
+
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+  }
+
+  .adult-modal {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d0a0a 100%);
+    border: 3px solid #FF0000;
+    border-radius: 16px;
+    padding: 32px;
+    max-width: 450px;
+    width: 90%;
+    box-shadow: 0 0 50px rgba(255, 0, 0, 0.4);
+    animation: modalSlideIn 0.3s ease-out;
+  }
+
+  @keyframes modalSlideIn {
+    from { opacity: 0; transform: scale(0.9) translateY(-20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  .error-shake {
+    animation: shake 0.5s;
+  }
+
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+  }
+}

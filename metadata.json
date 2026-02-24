@@ -1,0 +1,8 @@
+{
+  "name": "AI Influencer Studio",
+  "description": "Professional AI content creation platform for virtual influencers, featuring image/video generation, marketplace, and media management.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
